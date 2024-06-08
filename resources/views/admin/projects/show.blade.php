@@ -10,6 +10,7 @@
     @endif
 
     <div class="card">
+        
         {{-- nome progetto --}}
         <div class="card-body">
             <h5 class="card-title">{{$project->name}}</h5>
@@ -24,14 +25,26 @@
         
         {{-- corpo progetto --}}
         <ul class="list-group list-group-flush">
+
+            {{-- Tipo --}}
+            <li class="list-group-item">
+                <strong>Tipo</strong>:
+                {{$project->type ? $project->type->name : 'Nessuno'}}
+            </li>
+
+            {{-- Slug --}}
             <li class="list-group-item">
                 <strong>Slug</strong>:
                 {{$project->slug}}
             </li>
+
+            {{-- Nome azienda --}}
             <li class="list-group-item">
                 <strong>Nome Azienda</strong>:
                 {{$project->client_name}}
             </li>
+
+            {{-- descrizione --}}
             @if ($project->summary)
                 <li class="list-group-item">
                     <strong>Descrizione</strong>:

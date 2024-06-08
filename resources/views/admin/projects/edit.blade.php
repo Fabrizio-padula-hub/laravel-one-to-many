@@ -37,6 +37,17 @@
         @error('cover_image')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
+
+        {{-- Selezione tipo --}}
+        <div class="mb-3">
+            <label for="type_id" class="form-label">Type</label>
+            <select class="form-select" id="type_id" name="type_id">
+                <option value="">Select Type</option>
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                @endforeach
+            </select>
+        </div>
         
         {{-- Nome cliente --}}
         <div class="mb-3">

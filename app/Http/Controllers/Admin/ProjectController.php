@@ -34,7 +34,13 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+
+        $data = [
+            'types'=>$types
+        ];
+
+        return view('admin.projects.create', $data);
     }
 
     /**
@@ -50,7 +56,8 @@ class ProjectController extends Controller
                 'name' => 'required|min:5|max:200',
                 'client_name' => 'required|min:5|max:150',
                 'summary'=> 'nullable',
-                'cover_image'=> 'nullable|image|max:512'
+                'cover_image'=> 'nullable|image|max:512',
+                'type_id'=> 'nullable|exists:types,id'
             ],
             [
                 'name.required' => 'Campo obbligatorio',
@@ -59,7 +66,8 @@ class ProjectController extends Controller
                 'client_name.required' => 'Campo obbligatorio',
                 'client_name.min' => 'Minino 5 caratteri',
                 'client_name.max' => 'Massimo 150 caratteri',
-                'cover_image.image'=> 'Il file deve essere un\'immagine (jpg, jpeg, png, bmp, gif, svg o webp).'
+                'cover_image.image'=> 'Il file deve essere un\'immagine (jpg, jpeg, png, bmp, gif, svg o webp).',
+                'type_id'=> 'Selezione non valida'
             ]
         );
 
@@ -112,8 +120,11 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        $types = Type::all();
+
         $data = [
-            'project' => $project
+            'project' => $project,
+            'types'=>$types
         ];
 
 
