@@ -145,7 +145,8 @@ class ProjectController extends Controller
                 'name' => 'required|min:5|max:200',
                 'client_name' => 'required|min:5|max:150',
                 'summary'=> 'nullable',
-                'cover_image'=> 'nullable|image|max:512'
+                'cover_image'=> 'nullable|image|max:512',
+                'type_id'=> 'nullable|exists:types,id'
             ],
             [
                 'name.required' => 'Campo obbligatorio',
@@ -154,7 +155,8 @@ class ProjectController extends Controller
                 'client_name.required' => 'Campo obbligatorio',
                 'client_name.min' => 'Minino 5 caratteri',
                 'client_name.max' => 'Massimo 150 caratteri',
-                'cover_image.image'=> 'Il file deve essere un\'immagine (jpg, jpeg, png, bmp, gif, svg o webp).'
+                'cover_image.image'=> 'Il file deve essere un\'immagine (jpg, jpeg, png, bmp, gif, svg o webp).',
+                'type_id'=> 'Selezione non valida'
             ]
         );
         
